@@ -1,10 +1,17 @@
-﻿namespace ScreenRecorder
+﻿using System;
+using ScreenRecorder.Services;
+
+class Program
 {
-    internal class Program
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello, World!");
-        }
+        string outputFolder = @"C:\Users\tomis\Desktop\snimke";
+        int interval = 1000;
+        ScreenCaptureService screenCaptureService = new ScreenCaptureService(outputFolder, interval);
+        screenCaptureService.StartRecording();
+        Console.WriteLine("Screen capture started. Press 'Enter' to stop.");
+        Console.ReadLine();
+        screenCaptureService.StopRecording();
+        Console.WriteLine("Screen capture stopped.");
     }
 }
