@@ -12,8 +12,8 @@ namespace ScreenRecorder.Services
     {
         private readonly string outputFolder;
         private readonly int interval;
-        private bool isRecording;
-        private int imageCounter = 0;
+        private bool isRecording = false;
+        public bool IsRecording => isRecording;
 
         [DllImport("user32.dll")]
         public static extern bool GetClientRect(IntPtr hwnd, ref Rectangle lpRect);
@@ -37,7 +37,8 @@ namespace ScreenRecorder.Services
                     CaptureScreen();
                     Thread.Sleep(interval);
                 }
-            });
+            }
+            );
         }
         public void StopRecording()
         {
@@ -71,7 +72,7 @@ namespace ScreenRecorder.Services
                                 Console.WriteLine("Output folder does not exist, creating...");
                                 Directory.CreateDirectory(outputFolder);
                             }
-                            string filePath = Path.Combine(outputFolder, "screenshot_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png");
+                            string filePath = Path.Combine(outputFolder, "screenshot_" + DateTime.Now.ToString("yyyyMMdd_HHmmss_fff") + ".png");
                             using (var stream = File.OpenWrite(filePath))
                             {
                                 data.SaveTo(stream);

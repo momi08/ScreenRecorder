@@ -18,7 +18,8 @@ public class VideoService
             Console.WriteLine("No images found.");
             return;
         }
-        string videoPath = Path.Combine(outputFolder, "output_video.avi");
+        string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        string videoPath = Path.Combine(outputFolder, $"output_video_{timestamp}.avi");
         using (var writer = new VideoWriter(videoPath, FourCC.MJPG, 30, new OpenCvSharp.Size(1920, 1080)))
         {
             foreach (string imagePath in imageFiles)
