@@ -6,12 +6,17 @@ class Program
     static void Main()
     {
         string outputFolder = @"C:\Users\tomis\Desktop\snimke";
-        int interval = 1000;
+        int interval = 1000; //ms
+
         ScreenCaptureService screenCaptureService = new ScreenCaptureService(outputFolder, interval);
         screenCaptureService.StartRecording();
         Console.WriteLine("Screen capture started. Press 'Enter' to stop.");
         Console.ReadLine();
+
         screenCaptureService.StopRecording();
         Console.WriteLine("Screen capture stopped.");
+
+        VideoService videoService = new VideoService(outputFolder);
+        videoService.CreateVideoFromImages();
     }
 }

@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SkiaSharp;
 using System.Runtime.InteropServices;
-using System.Drawing; 
+using System.Drawing;
 
 namespace ScreenRecorder.Services
 {
@@ -27,7 +27,6 @@ namespace ScreenRecorder.Services
             this.interval = interval;
             Directory.CreateDirectory(outputFolder);
         }
-
         public void StartRecording()
         {
             isRecording = true;
@@ -40,12 +39,10 @@ namespace ScreenRecorder.Services
                 }
             });
         }
-
         public void StopRecording()
         {
             isRecording = false;
         }
-
         private void CaptureScreen()
         {
             try
