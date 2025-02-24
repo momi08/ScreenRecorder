@@ -5,7 +5,8 @@ class Program
 {
     static void Main()
     {
-        string outputFolder = @"C:\Users\tomis\Desktop\snimke";
+        string outputFolder = Path.Combine(Directory.GetCurrentDirectory(), "records");
+        Directory.CreateDirectory(outputFolder);
         int interval = 500;
 
         Console.WriteLine("Do you want to delete files older than a specific timestamp? (y/n):");
